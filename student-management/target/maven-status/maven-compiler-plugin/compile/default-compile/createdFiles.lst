@@ -1,0 +1,5 @@
+com\durgaprasad\studentmanagement\model\Student.class
+com\durgaprasad\studentmanagement\StudentManagementApp.class
+StudentDAO.class
+StudentService.class
+DBConnection.class
