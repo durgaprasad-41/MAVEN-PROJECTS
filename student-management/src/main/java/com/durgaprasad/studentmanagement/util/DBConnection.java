@@ -1,23 +1,18 @@
 package com.durgaprasad.studentmanagement.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class DBConnection {
+    private static final String URL = "jdbc:mysql://localhost:3306/student_management?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
-    public static void main(String[] args) {
+    public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/student_management",
-                    "root",
-                    "root");
-
-            System.out.println("Database Connected Successfully");
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException("Failed to connect to the student_management database", e);
         }
     }
 }
